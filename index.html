@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LabMove - Laboratório de Ideias da Escola. Transforme problemas em soluções criativas.">
+  <meta name="theme-color" content="#172033">
+  <title>LabMove | Laboratório de Ideias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🚀</span>
+        <div>
+          <h1>LabMove</h1>
+          <p>Laboratório de Ideias da Escola</p>
+        </div>
+      </div>
+      <button id="themeToggle" class="theme-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" data-section="inicio">Início</button>
+    <button class="nav-btn" data-section="ideiasArea">Ideias</button>
+    <button class="nav-btn" data-section="projetosArea">Projetos</button>
+    <button class="nav-btn" data-section="swotArea">SWOT</button>
+    <button class="nav-btn" data-section="tecnologiasArea">Tecnologias</button>
+    <button class="nav-btn" data-section="sustentabilidadeArea">Sustentabilidade</button>
+    <button class="nav-btn" data-section="equipeArea">Equipe</button>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <h2>Transforme problemas em soluções.</h2>
+        <p>
+          O <strong>LabMove</strong> é um clube de inovação onde os próprios alunos
+          identificam problemas da escola e trabalham juntos para criar soluções
+          criativas e tecnológicas.
+        </p>
+        <div class="hero-actions">
+          <button class="action primary" onclick="document.getElementById('titulo').focus()">
+            💡 Nova ideia
+          </button>
+          <button class="action secondary" onclick="irPara('ideiasArea')">
+            Ver ideias
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+      <div class="metric">
+        <span class="metric-icon">💡</span>
+        <strong id="totalIdeias">0</strong>
+        <span class="metric-label">Ideias</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">👍</span>
+        <strong id="totalVotos">0</strong>
+        <span class="metric-label">Votos</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🛠️</span>
+        <strong id="totalProjetos">0</strong>
+        <span class="metric-label">Projetos</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🏆</span>
+        <strong id="totalConcluidos">0</strong>
+        <span class="metric-label">Concluídos</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- Criar ideia -->
+      <section class="card" id="criarIdeia">
+        <h2>💡 Criar nova ideia</h2>
+
+        <div class="form-group">
+          <label for="titulo">Nome da ideia</label>
+          <input id="titulo" type="text" placeholder="Ex: Sistema de reutilização de água" maxlength="80">
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Qual problema você quer resolver?</label>
+          <textarea id="descricao" placeholder="Descreva o problema e a ideia de solução..." maxlength="500"></textarea>
+          <small class="char-count"><span id="charCount">0</span>/500</small>
+        </div>
+
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <select id="categoria">
+            <option value="">Escolha uma categoria</option>
+            <option value="Tecnologia">💻 Tecnologia</option>
+            <option value="Sustentabilidade">🌱 Sustentabilidade</option>
+            <option value="Espaços">🏫 Espaços</option>
+            <option value="Educação">📚 Educação</option>
+            <option value="Eventos">🎉 Eventos</option>
+            <option value="Saúde">❤️ Saúde e Bem-estar</option>
+          </select>
+        </div>
+
+        <div class="btn-row">
+          <button class="action secondary" onclick="analisarIA()">
+            🤖 Analisar com IA
+          </button>
+          <button class="action primary" onclick="adicionarIdeia()">
+            ➕ Cadastrar ideia
+          </button>
+        </div>
+
+        <div id="resultadoIA" class="ia-result" hidden></div>
+      </section>
+
+      <!-- Lista de ideias -->
+      <section class="card" id="ideiasArea">
+        <div class="card-header">
+          <h2>🔥 Ideias dos alunos</h2>
+          <div class="filters">
+            <select id="filtroCategoria" onchange="atualizar()">
+              <option value="">Todas categorias</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Sustentabilidade">Sustentabilidade</option>
+              <option value="Espaços">Espaços</option>
+              <option value="Educação">Educação</option>
+              <option value="Eventos">Eventos</option>
+              <option value="Saúde">Saúde e Bem-estar</option>
+            </select>
+            <select id="filtroOrdenacao" onchange="atualizar()">
+              <option value="votos">Mais votadas</option>
+              <option value="recentes">Mais recentes</option>
+              <option value="antigas">Mais antigas</option>
+            </select>
+          </div>
+        </div>
+        <div id="listaIdeias" class="lista"></div>
+      </section>
+    </div>
+
+    <!-- Projetos -->
+    <section class="card" id="projetosArea">
+      <div class="card-header">
+        <h2>🛠️ Projetos em andamento</h2>
+        <select id="filtroStatusProjeto" onchange="atualizar()">
+          <option value="">Todos status</option>
+          <option value="Planejamento">Planejamento</option>
+          <option value="Desenvolvimento">Desenvolvimento</option>
+          <option value="Teste">Teste</option>
+          <option value="Concluído">Concluído</option>
+        </select>
+      </div>
+      <div id="listaProjetos" class="lista"></div>
+    </section>
+
+    <!-- SWOT -->
+    <section class="card" id="swotArea">
+      <h2>📊 Matriz SWOT / FOFA</h2>
+      <p class="swot-intro">Análise estratégica do LabMove para orientar decisões e melhorias.</p>
+      <div class="swot">
+        <div class="swot-item forcas">
+          <h3>💪 Forças</h3>
+          <ul>
+            <li>Participação ativa dos alunos</li>
+            <li>Aprendizado prático e hands-on</li>
+            <li>Criatividade e diversidade de ideias</li>
+            <li>Integração entre diferentes turmas</li>
+          </ul>
+        </div>
+        <div class="swot-item fraquezas">
+          <h3>⚠️ Fraquezas</h3>
+          <ul>
+            <li>Dependência de materiais e recursos</li>
+            <li>Necessidade de organização contínua</li>
+            <li>Falta de experiência em gestão de projetos</li>
+            <li>Tempo limitado dos alunos</li>
+          </ul>
+        </div>
+        <div class="swot-item oportunidades">
+          <h3>🚀 Oportunidades</h3>
+          <ul>
+            <li>Parcerias com empresas e universidades</li>
+            <li>Participação em feiras de ciências</li>
+            <li>Destaque e visibilidade para a escola</li>
+            <li>Desenvolvimento de soft skills</li>
+          </ul>
+        </div>
+        <div class="swot-item ameacas">
+          <h3>🛑 Ameaças</h3>
+          <ul>
+            <li>Falta de investimento contínuo</li>
+            <li>Desinteresse ou rotatividade de alunos</li>
+            <li>Dificuldade de manter o projeto ativo</li>
+            <li>Concorrência com outras atividades</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="tecnologiasArea">
+      <h2>💻 Tecnologias e arquitetura</h2>
+      <p class="swot-intro">A proposta aplica conhecimentos do curso Técnico em Desenvolvimento de Sistemas.</p>
+      <div class="info-grid">
+        <article class="info-item"><h3>Front-End</h3><p>HTML5, CSS3 e JavaScript para uma interface intuitiva, acessível e responsiva.</p></article>
+        <article class="info-item"><h3>Back-End</h3><p>Node.js e APIs RESTful para regras de negócio, autenticação e comunicação entre módulos.</p></article>
+        <article class="info-item"><h3>Mobile</h3><p>Design responsivo e conceito de Progressive Web App (PWA), com acesso por smartphones.</p></article>
+        <article class="info-item"><h3>Banco de dados</h3><p>PostgreSQL, modelagem de entidades, integridade e persistência das informações.</p></article>
+        <article class="info-item"><h3>Inteligência Artificial</h3><p>Categorização automática, sugestões de melhoria, identificação de ideias semelhantes e triagem de conteúdo.</p></article>
+        <article class="info-item"><h3>Modelagem e versionamento</h3><p>Documentação de engenharia de software e uso de Git e GitHub no desenvolvimento colaborativo.</p></article>
+      </div>
+      <p class="notice"><strong>Importante:</strong> a análise inteligente desta versão é simulada por palavras-chave, sem conexão com uma IA externa. Node.js, PostgreSQL e integração real com IA fazem parte da arquitetura proposta, mas não estão implementados nesta versão estática. Os dados ficam salvos no navegador.</p>
+    </section>
+
+    <section class="card" id="sustentabilidadeArea">
+      <h2>🌱 Sustentabilidade</h2>
+      <p class="swot-intro">O projeto trabalha a sustentabilidade em duas frentes.</p>
+      <div class="info-grid">
+        <article class="info-item"><h3>Conscientização ambiental</h3><ul><li>Consumo consciente na escola.</li><li>Reaproveitamento de materiais.</li><li>Projetos escolares sustentáveis.</li><li>Educação ambiental e soluções de baixo impacto.</li></ul></article>
+        <article class="info-item"><h3>Tecnologia Verde (TI Verde)</h3><ul><li>Código otimizado e de baixo consumo.</li><li>Prioridade para ferramentas gratuitas e open-source.</li><li>Hospedagem com práticas eficientes.</li><li>Redução da pegada de carbono digital.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="card" id="equipeArea">
+      <h2>🎓 Sobre o projeto</h2>
+      <p>O LabMove reúne estudantes de diferentes turmas e cursos para identificar desafios do ambiente escolar e desenvolver soluções criativas, tecnológicas e colaborativas.</p>
+      <div class="team-details">
+        <p><strong>Integrantes:</strong> Kauã Douglas, Jhon Bryan e Nicholas Lopes</p>
+        <p><strong>Curso:</strong> Técnico em Desenvolvimento de Sistemas</p>
+        <p><strong>Escola:</strong> E.E. Major Cosme de Faria</p>
+        <p><strong>Orientador:</strong> Prof. Robertson E. Silva</p>
+        <p><strong>Ano:</strong> 2026</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>LabMove — Alunos criando soluções para a própria escola 🚀</p>
+    <p class="footer-note">Dados salvos localmente no seu navegador · Pronto para GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
