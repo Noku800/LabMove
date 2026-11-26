@@ -1,0 +1,72 @@
+/* LabMove — Easter eggs extras. Usado por easter-eggs.js */
+
+.egg-overlay {
+  position: fixed; inset: 0; z-index: 9990;
+  pointer-events: none; mix-blend-mode: soft-light; opacity: .75;
+}
+.egg-banner {
+  position: fixed; top: 14%; left: 50%; transform: translateX(-50%);
+  z-index: 9999; max-width: 92vw; text-align: center;
+  padding: .6rem 1.2rem; border-radius: 999px;
+  font: 800 clamp(1rem, 4.5vw, 1.8rem)/1.2 system-ui, sans-serif;
+  background: #fff; color: #111; box-shadow: 0 6px 24px rgba(0,0,0,.35);
+  transition: opacity .6s, transform .6s;
+}
+.egg-banner-sai { opacity: 0; transform: translate(-50%, -30px); }
+.egg-contador {
+  position: fixed; right: 12px; bottom: 12px; z-index: 9999;
+  padding: .3rem .7rem; border-radius: 999px;
+  font: 700 .9rem system-ui, sans-serif;
+  background: rgba(0,0,0,.75); color: #fff; pointer-events: none;
+}
+.egg-emoji {
+  position: fixed; top: -3rem; z-index: 9995; pointer-events: none;
+  animation: egg-cair linear forwards;
+}
+@keyframes egg-cair { to { transform: translateY(115vh) rotate(360deg); } }
+
+.egg-voo {
+  position: fixed; left: -8rem; z-index: 9996; pointer-events: none;
+  font-size: 3rem; animation: egg-cruzar 6s linear forwards;
+}
+@keyframes egg-cruzar { to { transform: translateX(calc(100vw + 16rem)); } }
+
+/* Miku: azul-turquesa */
+.egg-miku .egg-overlay { background: linear-gradient(160deg, #39c5bb, #0b7a8a); }
+.egg-miku .egg-banner { background: #39c5bb; color: #052c33; }
+
+/* Teto: vermelho e rosa */
+.egg-teto .egg-overlay { background: linear-gradient(160deg, #d6203a, #ff8fa8); }
+.egg-teto .egg-banner { background: #d6203a; color: #fff; }
+
+/* Italian brainrot: verde, branco e vermelho */
+.egg-bomb .egg-overlay { background: linear-gradient(90deg, #1f9d55 0 33%, #fff 33% 66%, #d62828 66%); }
+.egg-bomb .egg-banner { background: #1f9d55; color: #fff; }
+
+/* Tung Tung Sahur: noite + tambor batendo */
+.egg-sahur .egg-overlay { background: radial-gradient(circle at 50% 0, #3b2a6b, #05030f); opacity: .85; mix-blend-mode: multiply; }
+.egg-sahur .egg-banner { background: #f4c542; color: #1a1200; }
+.egg-sahur body, body.egg-sahur { animation: egg-batida .5s ease-in-out infinite; }
+@keyframes egg-batida {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, 4px); }
+}
+
+/* Road Roller: amarelo */
+.egg-road .egg-overlay { background: linear-gradient(160deg, #ffd800, #ff9f00); }
+.egg-road .egg-banner { background: #ffd800; color: #222; }
+
+/* Glitch: RGB separado */
+.egg-glitch .egg-overlay { background: linear-gradient(160deg, #00ffe1, #ff00aa); opacity: .55; }
+.egg-glitch .egg-banner { background: #111; color: #0ff; text-shadow: 2px 0 #f0a, -2px 0 #0ff; }
+body.egg-glitch { animation: egg-glitch .9s steps(2, end) infinite; }
+@keyframes egg-glitch {
+  0%, 90%, 100% { filter: none; transform: none; }
+  92% { filter: hue-rotate(90deg) saturate(2); transform: translateX(-4px); }
+  96% { filter: hue-rotate(-90deg) contrast(1.4); transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.egg-sahur, body.egg-glitch { animation: none; }
+  .egg-emoji, .egg-voo { animation-duration: 8s; }
+}
