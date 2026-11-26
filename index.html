@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LabMove — Laboratório de Ideias da Escola. Identifique desafios, crie soluções e transforme ideias em projetos.">
+  <meta name="theme-color" content="#101d35">
+  <title>LabMove | Ideias que movimentam a escola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>✳</text></svg>">
+</head>
+<body>
+  <div class="topline"></div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="LabMove, início">
+      <span class="brand-mark">L<span>+</span></span>
+      <span class="brand-copy"><strong>LabMove</strong><small>LABORATÓRIO DE IDEIAS</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="#inicio">Início</a>
+      <a class="nav-link" href="#ideias">Ideias</a>
+      <a class="nav-link" href="#projetos">Projetos</a>
+      <a class="nav-link" href="#sobre">Sobre</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-cta" href="#criar">Enviar uma ideia <span>↗</span></a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span> INOVAÇÃO FEITA NA ESCOLA</div>
+        <h1>Uma boa ideia pode<br><em>mudar tudo.</em></h1>
+        <p class="hero-lead">O LabMove conecta estudantes para identificar desafios reais da escola e transformar criatividade em soluções que fazem a diferença.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#criar">Compartilhar uma ideia <span>↗</span></a>
+          <a class="button button-ghost" href="#ideias">Explorar propostas <span>↓</span></a>
+        </div>
+        <div class="hero-footnote"><span class="mini-avatars">K <i>J</i> <b>N</b></span><span>Feito por estudantes, para a comunidade escolar.</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-core"><span>✳</span><small>IDEIAS EM<br>MOVIMENTO</small></div>
+        <div class="art-tag tag-top"><span>✦</span> Criatividade</div>
+        <div class="art-tag tag-right"><span>↗</span> Tecnologia</div>
+        <div class="art-tag tag-bottom"><span>◎</span> Colaboração</div>
+        <div class="art-dot dot-one"></div><div class="art-dot dot-two"></div><div class="art-dot dot-three"></div>
+      </div>
+      <div class="hero-bottomline"><span>01 / IDEIAS</span><span>02 / COLABORAÇÃO</span><span>03 / TRANSFORMAÇÃO</span></div>
+    </section>
+
+    <section class="stats" aria-label="Indicadores do LabMove">
+      <div class="stat"><span class="stat-icon">✳</span><div><strong id="totalIdeias">0</strong><small>Ideias compartilhadas</small></div></div>
+      <div class="stat"><span class="stat-icon">↗</span><div><strong id="totalVotos">0</strong><small>Apoios da comunidade</small></div></div>
+      <div class="stat"><span class="stat-icon">⌘</span><div><strong id="totalProjetos">0</strong><small>Projetos em andamento</small></div></div>
+      <div class="stat"><span class="stat-icon">✓</span><div><strong id="totalConcluidos">0</strong><small>Projetos concluídos</small></div></div>
+    </section>
+
+    <section class="section-block" id="criar">
+      <div class="section-heading">
+        <div><div class="eyebrow dark-eyebrow">DO DESAFIO À SOLUÇÃO</div><h2>Toda transformação<br>começa com uma <em>ideia.</em></h2></div>
+        <p>Conte o que precisa melhorar. A inteligência artificial do LabMove pode ajudar a avaliar sua proposta antes de compartilhá-la.</p>
+      </div>
+
+      <div class="creation-layout">
+        <form class="idea-form panel" id="ideaForm">
+          <div class="panel-top"><div><span class="step-label">NOVA PROPOSTA</span><h3>Apresente sua ideia</h3></div><span class="panel-symbol">✳</span></div>
+          <label for="titulo">Nome da ideia</label>
+          <input id="titulo" name="titulo" maxlength="90" placeholder="Ex.: Horta inteligente na escola" required>
+          <label for="problema">Qual problema você identificou?</label>
+          <textarea id="problema" name="problema" maxlength="700" rows="3" placeholder="Explique o que acontece, onde acontece e quem é afetado..." required></textarea>
+          <div class="field-meta"><span>Seja claro e objetivo.</span><span><b id="problemCount">0</b>/700</span></div>
+          <label for="solucao">Como sua ideia resolveria isso?</label>
+          <textarea id="solucao" name="solucao" maxlength="700" rows="3" placeholder="Descreva como a solução funcionaria..." required></textarea>
+          <div class="field-meta"><span>Não precisa estar tudo pronto.</span><span><b id="solutionCount">0</b>/700</span></div>
+          <label for="categoria">Área da proposta</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione uma categoria</option>
+            <option>Tecnologia</option><option>Sustentabilidade</option><option>Espaços</option>
+            <option>Educação</option><option>Eventos</option><option>Saúde e bem-estar</option><option>Acessibilidade</option>
+          </select>
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Publicar ideia <span>↗</span></button>
+          </div>
+          <p class="privacy-note">Não inclua nomes completos, contatos ou informações pessoais de estudantes.</p>
+        </form>
+
+        <aside class="ai-side easter-hint">
+          <div class="ai-intro">
+            <div class="ai-orb">?</div>
+            <div><span class="step-label">ÁREA SECRETA</span><h3>Tem algo escondido<br>por aqui...</h3></div>
+          </div>
+          <p>O formulário de ideias guarda alguns segredos. Explore, experimente e preste atenção no que você digita.</p>
+          <div class="ai-benefits">
+            <div><span>✦</span><p><strong>Curiosidade</strong><small>Algumas combinações especiais mudam o visual do site.</small></p></div>
+            <div><span>⌁</span><p><strong>Tempo limitado</strong><small>As surpresas duram apenas um minuto.</small></p></div>
+            <div><span>↺</span><p><strong>Volta ao normal</strong><small>Depois, o LabMove recupera seu visual original.</small></p></div>
+          </div>
+          <div class="ai-disclaimer">Dica: experimente escrever no campo “Nome da ideia”. 😉</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-block section-tint" id="ideias">
+      <div class="section-heading compact-heading">
+        <div><div class="eyebrow dark-eyebrow">MURAL COLABORATIVO</div><h2>Ideias que estão<br><em>ganhando forma.</em></h2></div>
+        <p>Conheça as propostas da comunidade, apoie as que fazem sentido e ajude a construir soluções coletivas.</p>
+      </div>
+      <div class="list-toolbar">
+        <div><span class="live-dot"></span><strong>Ideias da comunidade</strong></div>
+        <div class="filters">
+          <input id="buscaIdeias" type="search" placeholder="Buscar ideias..." aria-label="Buscar ideias">
+          <select id="filtroCategoria" aria-label="Filtrar por categoria"><option value="">Todas as áreas</option><option>Tecnologia</option><option>Sustentabilidade</option><option>Espaços</option><option>Educação</option><option>Eventos</option><option>Saúde e bem-estar</option><option>Acessibilidade</option></select>
+          <select id="filtroOrdenacao" aria-label="Ordenar ideias"><option value="votos">Mais apoiadas</option><option value="recentes">Mais recentes</option><option value="antigas">Mais antigas</option></select>
+          <button type="button" class="small-button" id="btnExportar" title="Baixar backup das ideias">Backup ↓</button>
+          <label class="small-button file-btn" title="Importar backup">Importar ↑<input type="file" id="inputImportar" accept="application/json" hidden></label>
+        </div>
+      </div>
+      <div id="listaIdeias" class="idea-list"></div>
+    </section>
+
+    <section class="section-block" id="projetos">
+      <div class="section-heading compact-heading">
+        <div><div class="eyebrow dark-eyebrow">DA PROPOSTA À PRÁTICA</div><h2>Projetos em<br><em>movimento.</em></h2></div>
+        <p>As ideias podem evoluir para projetos acompanhados pela equipe, passando por planejamento, desenvolvimento e testes.</p>
+      </div>
+      <div class="project-toolbar"><span class="step-label">ACOMPANHAMENTO</span><select id="filtroStatusProjeto" aria-label="Filtrar projetos"><option value="">Todos os status</option><option>Planejamento</option><option>Desenvolvimento</option><option>Teste</option><option>Concluído</option></select></div>
+      <div id="listaProjetos" class="project-grid"></div>
+    </section>
+
+    <section class="section-block section-tint" id="sobre">
+      <div class="section-heading compact-heading">
+        <div><div class="eyebrow dark-eyebrow">NOSSO JEITO DE PENSAR</div><h2>Inovar é também<br><em>entender o cenário.</em></h2></div>
+        <p>A matriz FOFA ajuda a reconhecer fatores internos e externos que podem influenciar o desenvolvimento do LabMove.</p>
+      </div>
+      <div class="swot-grid">
+        <article class="swot-card strength"><span>01 / INTERNO</span><h3>Forças</h3><ul><li>Participação ativa dos alunos</li><li>Aprendizado prático e criatividade</li><li>Integração entre diferentes turmas</li></ul></article>
+        <article class="swot-card weakness"><span>02 / INTERNO</span><h3>Fraquezas</h3><ul><li>Dependência de materiais e recursos</li><li>Necessidade de organização contínua</li><li>Experiência limitada em gestão de projetos</li></ul></article>
+        <article class="swot-card opportunity"><span>03 / EXTERNO</span><h3>Oportunidades</h3><ul><li>Parcerias com empresas e universidades</li><li>Participação em feiras de ciências</li><li>Desenvolvimento de habilidades socioemocionais</li></ul></article>
+        <article class="swot-card threat"><span>04 / EXTERNO</span><h3>Ameaças</h3><ul><li>Falta de investimento contínuo</li><li>Desinteresse ou rotatividade de alunos</li><li>Dificuldade de manter o projeto ativo</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading compact-heading">
+        <div><div class="eyebrow dark-eyebrow">CONSTRUÍDO COM TECNOLOGIA</div><h2>Aprender fazendo.<br><em>Criar colaborando.</em></h2></div>
+        <p>O projeto conecta conhecimentos do curso Técnico em Desenvolvimento de Sistemas a desafios reais do ambiente escolar.</p>
+      </div>
+      <div class="tech-grid">
+        <article><span>01</span><h3>Front-End</h3><p>HTML, CSS e JavaScript para uma experiência acessível e responsiva.</p></article>
+        <article><span>02</span><h3>Back-End e dados</h3><p>Node.js e API para processar solicitações com segurança. Banco de dados poderá ser integrado em uma etapa futura.</p></article>
+        <article><span>03</span><h3>Inteligência Artificial</h3><p>Análise de ideias, identificação de riscos, sugestões de melhoria e apoio à tomada de decisão.</p></article>
+        <article><span>04</span><h3>Modelagem e versionamento</h3><p>Organização do sistema e colaboração com Git e GitHub.</p></article>
+      </div>
+    </section>
+
+    <section class="sustainability-band">
+      <div class="sustainability-symbol">↗</div><div><span class="step-label">IMPACTO POSITIVO</span><h2>Inovação que respeita<br>o <em>futuro.</em></h2></div>
+      <p>O LabMove incentiva o reaproveitamento de materiais, o consumo consciente, a acessibilidade e soluções que melhorem a escola com responsabilidade ambiental.</p>
+    </section>
+
+    <section class="team-section">
+      <div><div class="eyebrow dark-eyebrow">QUEM FAZ ACONTECER</div><h2>Uma iniciativa<br><em>da comunidade escolar.</em></h2></div>
+      <div class="team-info">
+        <p><small>DESENVOLVIMENTO</small><strong>Kauã Douglas · Jhon Bryan · Nicholas Lopes</strong></p>
+        <p><small>FORMAÇÃO</small><strong>Técnico em Desenvolvimento de Sistemas</strong></p>
+        <p><small>INSTITUIÇÃO</small><strong>E.E. Major Cosme de Faria</strong></p>
+        <p><small>ORIENTAÇÃO</small><strong>Prof. Robertson E. Silva</strong></p>
+        <p><small>ANO</small><strong>2026</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#inicio"><span class="brand-mark">L<span>+</span></span><span class="brand-copy"><strong>LabMove</strong><small>LABORATÓRIO DE IDEIAS</small></span></a>
+    <p>Ideias que movimentam a escola.</p><span>© 2026 · Projeto educacional</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
