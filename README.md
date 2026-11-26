@@ -1,41 +1,37 @@
 # LabMove — Laboratório de Ideias da Escola
 
-Site do projeto LabMove: um clube de inovação para estudantes identificarem desafios da escola, proporem soluções, apoiarem ideias e acompanharem projetos.
+Versão profissional com dois easter eggs secretos de duração limitada.
 
-## Funcionalidades
-- Cadastro de ideias por título, descrição e categoria.
-- Análise orientativa simulada por palavras-chave (não conectada a uma IA externa).
-- Votação/apoio às ideias.
-- Transformação de ideias em projetos e atualização de status.
-- Painel de indicadores, filtros e ordenação.
-- Matriz SWOT / FOFA.
-- Tema claro/escuro e layout responsivo.
-- Seções sobre tecnologias, sustentabilidade e equipe.
+## Recursos
+- Site responsivo para celular e computador.
+- Tema claro e escuro.
+- Cadastro de ideias, apoios e acompanhamento de projetos.
+- Filtros de ideias e status.
+- Matriz FOFA, sustentabilidade e tecnologias do projeto.
+- Dois modos secretos que transformam o visual do site por 60 segundos.
 
-## Identificação
-- **Integrantes:** Kauã Douglas, Jhon Bryan e Nicholas Lopes
-- **Curso:** Técnico em Desenvolvimento de Sistemas
-- **Escola:** E.E. Major Cosme de Faria
-- **Orientador:** Prof. Robertson E. Silva
-- **Ano:** 2026
+## Easter eggs
+Digite um dos códigos no campo **Nome da ideia** e clique em **Publicar ideia**:
+- `67resenh@##` — ativa o modo 67/brainrot com memes e uma ilustração original inspirada no meme Tung Tung Sahur.
+- `Tetomelhorvocaloid67` — ativa o modo Teto com ilustrações originais de fã e memes temáticos.
 
-## Tecnologias desta versão
-HTML5, CSS3 e JavaScript puro. Os dados são armazenados no navegador por `localStorage`.
-
-Node.js, APIs REST, PostgreSQL, integração real com IA e recursos PWA aparecem como arquitetura/possibilidades de evolução, mas não estão implementados como serviços nesta versão estática.
-
-## Executar
-Abra `index.html` no navegador. Opcionalmente, execute `python -m http.server 8000` na pasta e acesse `http://localhost:8000`.
+Os códigos são detectados antes do cadastro e não são publicados como ideias. O modo secreto dura 60 segundos e depois o site retorna ao tema normal que estava selecionado.
 
 ## Publicar no GitHub Pages
-1. Crie um repositório no GitHub chamado `labmove`.
-2. Envie os arquivos `index.html`, `styles.css`, `script.js`, `README.md` e `.gitignore` para a raiz do repositório.
-3. Abra **Settings** → **Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch `main` e a pasta `/ (root)`, depois clique em **Save**.
-6. Após a publicação, o endereço será `https://SEU-USUARIO.github.io/labmove/` (substitua `SEU-USUARIO` pelo seu usuário do GitHub).
+1. Envie todos os arquivos desta pasta ao repositório GitHub, incluindo `index.html`, `styles.css`, `script.js` e a pasta `images`.
+2. No GitHub, abra **Settings → Pages**.
+3. Em **Build and deployment**, selecione **Deploy from a branch**.
+4. Escolha a branch `main` e a pasta `/ (root)`; salve.
+5. Aguarde a publicação e abra o endereço indicado pelo GitHub Pages.
 
 ## Observação
-Como esta versão usa `localStorage`, ideias e votos ficam salvos apenas no navegador/dispositivo em que foram cadastrados. Para compartilhar os dados entre os alunos, será necessário conectar um Back-End e um banco de dados.
+As ideias, votos e projetos são salvos no `localStorage` do navegador. Cada dispositivo mantém seus próprios dados. Para compartilhar o mesmo mural entre estudantes, será necessário integrar um banco de dados e autenticação em uma versão futura.
 
-**LabMove — Alunos criando soluções para a própria escola.**
+## Identificação do projeto
+- Integrantes: Kauã Douglas, Jhon Bryan e Nicholas Lopes
+- Curso: Técnico em Desenvolvimento de Sistemas
+- Escola: E.E. Major Cosme de Faria
+- Orientador: Prof. Robertson E. Silva
+- Ano: 2026
+
+**LabMove — Ideias que movimentam a escola.**
